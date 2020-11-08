@@ -8,6 +8,21 @@ test('Empty Stack', () => {
     const stack = new Vpc1.Vpc1Stack(app, 'MyTestStack');
     // THEN
     expectCDK(stack).to(matchTemplate({
-      "Resources": {}
+      "Resources": {
+        "hellocdk592CDB1B": {
+          "Type": "AWS::EC2::VPC",
+          "Properties": {
+            "CidrBlock": "10.0.0.0/16",
+            "EnableDnsHostnames": true,
+            "EnableDnsSupport": true,
+            "InstanceTenancy": "default",
+            "Tags": [
+              {
+                "Key": "Name",
+                "Value": "MyTestStack/hello-cdk"
+              }
+            ]
+          }
+        }}
     }, MatchStyle.EXACT))
 });
